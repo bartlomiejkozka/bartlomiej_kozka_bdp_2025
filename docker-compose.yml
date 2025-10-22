@@ -1,0 +1,16 @@
+services:
+  postgis:
+    image: postgis/postgis:18-3.6 # https://hub.docker.com/r/postgis/postgis/
+    platform: linux/amd64
+    restart: always
+    container_name: postgres_bdp_2025
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql
+
+volumes:
+  postgis_data:
+    driver: local # local storage
